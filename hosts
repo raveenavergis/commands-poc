@@ -16,7 +16,7 @@ openshift_deployment_type=openshift-enterprise
 openshift_clock_enabled=true
 
 # Network/DNS Related
-openshift_master_default_subdomain=apps-poc.cloud.chx
+openshift_master_default_subdomain=apps.ocp.honeywell.com
 osm_cluster_network_cidr=10.1.0.0/16
 osm_host_subnet_length=8
 openshift_portal_net=172.30.0.0/16
@@ -47,7 +47,8 @@ openshift_hosted_registry_selector='region=infra'
 openshift_disable_check=disk_availability,docker_storage,memory_availability
 
 # Mulititenant functionality (i.e. each project gets it's own "private" network)
-os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+#os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+os_sdn_network_plugin_name='redhat/openshift-ovs-subnet'
 
 # Uncomment when setting up logging/metrics/prometheus
 openshift_master_dynamic_provisioning_enabled=true
