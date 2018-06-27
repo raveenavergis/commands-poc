@@ -5,3 +5,13 @@ DATA_SIZE=90%FREE
 WIPE_SIGNATURES=true
 EOF
 
+In the master only:
+
+ssh-keygen
+
+for host in pocmaster.ocp.honeywell.com \
+    node1.ocp.honeywell.com \
+    node2.ocp.honeywell.com \
+    node3.ocp.honeywell.com; \
+    do ssh-copy-id -i ~/.ssh/id_rsa.pub $host; \
+    done
