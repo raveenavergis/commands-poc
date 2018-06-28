@@ -20,7 +20,7 @@ openshift_image_tag=v3.9.27
 #oreg_url_node=registry.access.redhat.com/openshift3/ose-${component}:${version}
 
 # Network/DNS Related
-openshift_master_default_subdomain=apps.ocp.honeywell.com
+openshift_master_default_subdomain=apps.poc.honeywell.com
 osm_cluster_network_cidr=10.1.0.0/16
 osm_host_subnet_length=8
 openshift_portal_net=172.30.0.0/16
@@ -113,9 +113,9 @@ openshift_hosted_etcd_storage_volume_size=10Gi
 ansible_service_broker_local_registry_whitelist=['.*-apb$']
 
 # If using Route53 or you're pointed to the master with a "vanity" name
-openshift_master_public_api_url=https://pocmaster.ocp.honeywell.com
-openshift_master_public_console_url=https://pocmaster.ocp.honeywell.com/console
-openshift_master_cluster_public_hostname=pocmaster.ocp.honeywell.com
+openshift_master_public_api_url=https://master.poc.honeywell.com
+openshift_master_public_console_url=https://master.poc.honeywell.com/console
+openshift_master_cluster_public_hostname=master.poc.honeywell.com
 openshift_master_api_port=443
 openshift_master_console_port=443
 
@@ -127,24 +127,24 @@ openshift_master_htpasswd_users={'developer': '$apr1$q2fVVf46$85HP/4JHGYeFBKAKPB
 
 # host group for etcd
 [etcd]
-pocmaster.ocp.honeywell.com
+master.poc.honeywell.com
 
 # host group for masters - set scedulable to "true" for the web-console pod
 [masters]
-pocmaster.ocp.honeywell.com openshift_schedulable=true
+master.poc.honeywell.com openshift_schedulable=true
 
 # host group for nodes, includes region info
 [nodes]
-pocmaster.ocp.honeywell.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
-node1.ocp.honeywell.com openshift_node_labels="{'region': 'primary', 'zone': 'z1'}"
-node2.ocp.honeywell.com openshift_node_labels="{'region': 'primary', 'zone': 'z2'}"
-node3.ocp.honeywell.com openshift_node_labels="{'region': 'primary', 'zone': 'z3'}"
+master.poc.honeywell.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+node1.poc.honeywell.com openshift_node_labels="{'region': 'primary', 'zone': 'z1'}"
+node2.poc.honeywell.com openshift_node_labels="{'region': 'primary', 'zone': 'z2'}"
+node3.poc.honeywell.com openshift_node_labels="{'region': 'primary', 'zone': 'z3'}"
 
 [glusterfs]
 # "standalone" glusterfs nodes STILL need to be in the "[nodes]" section
-node1.ocp.honeywell.com glusterfs_ip=10.224.89.25 glusterfs_zone=1 glusterfs_devices='[ "/dev/sdd" ]'
-node2.ocp.honeywell.com glusterfs_ip=10.224.89.29 glusterfs_zone=2 glusterfs_devices='[ "/dev/sdd" ]'
-node3.ocp.honeywell.com glusterfs_ip=10.224.89.31 glusterfs_zone=3 glusterfs_devices='[ "/dev/sdd" ]'
+node1.poc.honeywell.com glusterfs_ip=10.224.89.87 glusterfs_zone=1 glusterfs_devices='[ "/dev/sdd" ]'
+node2.poc.honeywell.com glusterfs_ip=10.224.89.88 glusterfs_zone=2 glusterfs_devices='[ "/dev/sdc" ]'
+node3.poc.honeywell.com glusterfs_ip=10.224.89.89 glusterfs_zone=3 glusterfs_devices='[ "/dev/sdc" ]'
 ##
 ##
 
